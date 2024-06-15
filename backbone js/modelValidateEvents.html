@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"
+        type="text/javascript"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js" type="text/javascript"></script>
+</head>
+<body>
+
+    <script>
+        let myModel=Backbone.Model.extend({
+            initialize:function(){
+                console.log("model");
+                // this.bind("change",function(model){
+                //     console.log("model changed");
+                // }) //
+
+                // this.bind("change:age",function(model){
+                //     console.log("age changed");
+                // })
+            },
+            validate:function(attribute){
+                if(attribute.age < 0){
+                    return "age cannot be negative"
+                }
+                // if(attribute.name){
+                //     return "name is"
+                // }
+            }
+        });
+
+        let m=new myModel({
+            name:"siva",
+            age:-2,
+            address:"hyd"
+        })
+        // let modelobj2=m.clone()
+        // let myView=Backbone.View.extend({
+        //     model:modelobj2,
+        //     initialize:function(){
+        //         this.render()
+        //     },
+        //     render:function(){
+        //         // console.log(this.model.get("age"));
+        //         // if(this.model.isValid()){
+        //         //     console.log("valid age");
+        //         // }else{
+        //         //     console.log(this.model.validationError);
+        //         // }
+        //         // this.model.on("change",function(){
+        //         //     console.log("change  detected by view");
+        //         // })
+        //         // this.model.bind("change:address",function(model){
+        //         //     console.log("address changed");
+        //         // })
+        //         modelobj2.set({"name":"charan",
+        //                         "age":23,
+        //                         "address":"tel"
+        //                     })
+        //         if(modelobj2.hasChanged()){console.log("values changed");}
+        //         else{console.log("values not changed");}
+        //         console.log(modelobj2.changedAttributes());
+        //         console.log(modelobj2.previousAttributes());
+        //         console.log(modelobj2.previous("age"));
+        //         // this.listenTo(this.model,"change",function(){
+        //         //     console.log("model changed");
+        //         // })
+        //         //1.clone()-it returns a copy of model i.e. we can store a copy in another variable
+        //         //2.hasChnaged()-it returns true if values are changed else false
+        //         //3.changedAttributes()-it return object of changed attirbutes
+        //         //4.previous()-by using this method we can check the previous value of any attribute
+        //         //5.previousAttributes()-it return object of previous attirbutes
+
+        //     }
+        // })
+        // let views=new myView()
+    </script>
+</body>
+</html>

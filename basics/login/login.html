@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Picktime</title>
+    <style>
+        form{
+            border: 2px solid;
+            width: 35%;
+            height: 58vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 11%;
+            margin-left: 35.5%;
+            box-shadow: 2px 2px 2px 5px grey;
+        }
+
+        form input{
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 15px 10px;
+            width: 300px;
+
+        }
+        form input::placeholder{
+            color: black;
+        }
+        form input::selection{
+            border-color: blue;
+        }
+        form button{
+            border: none;
+            border-radius: 10px;
+            background-color: green;
+            color: whitesmoke;
+            padding: 3% 33.3%;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post" id="form">
+        <label for="" style="font-size: 2rem;font-family: Arial, Helvetica, sans-serif;font-weight: 400;">Login</label><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <button>Login</button>
+        <a style="text-decoration: none;padding:10px 5px 5px 10px;color: black;" href="forgotpassword.html">Forgot Password?</a>
+    </form>
+
+    <center id="para"></center>
+     
+    <script>
+        //check email id exist in registration database or not if not show register page for registration
+        
+        
+        //email id is present then verify the email id and password from registration page
+    </script>
+</body>
+</html>

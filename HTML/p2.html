@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" id="form">
+        <fieldset>
+            <legend>personal details : </legend>
+            <label for="username">Username : </label>
+            <input type="text" id="username"><br>
+            <label for="email">Email : </label>
+            <input type="email" name="" id="email"><br>
+            <label for="password">Password : </label>
+            <input type="password" name="" id="password"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"><br>
+            <label for="gender">Gender : </label>
+            <input type="radio" name="gender" id="male"><label for="male">Male</label>
+            <input type="radio" name="gender" id="female"><label for="female">Female</label> <br>
+            <label for="qualification">qualification : </label>
+            <input type="checkbox" name="qualification" id="ten"><label for="ten">10<sup>th</sup></label>
+            <input type="checkbox" name="qualification" id="twelve"><label for="twelve">12<sup>th</sup></label><br>
+            <label for="hobbies">Select your fav hobbies : </label>
+            <select name="hobbies" id="hobbies">
+                <option value="cricket">cricket</option>
+                <option value="badminton">badminton</option>
+                <option value="kabadi">kabadi</option>
+            </select><br>
+            <label for="states">States : </label>
+            <input list="states">
+            <datalist id="states">
+                <option value="UP">UP</option>
+                <option value="AP">AP</option>
+                <option value="TS">TS</option>
+                <option value="TN">TN</option>
+                <option value="MP">MP</option>
+            </datalist><br>
+            <input type="range" min="0" max="100" id="ran" value="50" step="1">&nbsp;&nbsp;<span id="span"></span><br>
+            <input type="color" value="#fff00f"><br>
+            <input type="submit" name="" id=""><br>
+        </fieldset>
+    </form><br>
+    <div style="max-width: 50vw;margin: auto;border: 2px double;height: 40vh;overflow: auto;">
+        <img srcset="https://cdn.pixabay.com/photo/2023/05/29/00/24/blue-tit-8024809_1280.jpg" alt="" style="float: right;width: 150px;height: 40vh;">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi iste veritatis explicabo doloremque similique
+        molestiae dicta quam nostrum inventore, sint sapiente? Ex quam, delectus officia quos quasi omnis odio
+        quibusdam, est quas vero illum? Reiciendis illum, delectus eum, ab quidem quae similique beatae, in repudiandae
+        omnis ipsum assumenda corrupti saepe exercitationem aliquam non cumque sunt fugiat eaque deleniti optio neque
+        tenetur. Ex iure quo quia corrupti molestiae voluptas praesentium facere, quam est tenetur odit, laborum et
+        repellendus porro a aliquam fugit illum ipsa eveniet vel voluptatibus optio ratione! Inventore quibusdam
+        deleniti totam veniam nobis magni officiis aspernatur fuga neque? Eligendi. Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Aspernatur ea inventore reprehenderit distinctio ut deserunt voluptatum.
+        Repudiandae deleniti natus mollitia quae sed enim quis laboriosam dolorum atque quasi nobis molestiae labore
+        dicta corporis doloremque, totam ipsa delectus obcaecati. Fugit alias maiores est quo architecto, veniam,
+        possimus consectetur et at nihil ducimus harum, fuga incidunt velit laborum? Voluptatibus reprehenderit eos
+        repellendus incidunt blanditiis dolor exercitationem quod, omnis, iusto eligendi, at aliquid ad! Dolorum saepe
+        odit deserunt, fugiat, atque incidunt quam ab nihil, dolor enim perferendis quos ut? Nostrum similique veritatis
+        optio recusandae harum maiores voluptatum natus eum, quia possimus! Nisi eum voluptas ab atque corporis unde
+        deserunt amet non eveniet, culpa quaerat dignissimos ea officia temporibus doloribus aperiam laudantium iste
+        aliquid. Deserunt ipsam consequatur animi! Nulla vel, delectus qui repellendus corporis, maiores ullam deleniti
+        praesentium mollitia ipsam perspiciatis facere, nostrum magnam enim beatae iste voluptatum! Itaque incidunt
+        excepturi qui natus delectus repudiandae exercitationem voluptates assumenda? Dicta libero cumque dignissimos id
+        provident facere tempora quam veritatis at ducimus autem quis nobis voluptas aliquam ipsam aspernatur
+        consequatur suscipit dolorum tenetur fuga esse, laboriosam voluptate. Possimus enim voluptatum magni! Voluptate
+        vel expedita molestias! Atque esse explicabo blanditiis fuga quisquam totam exercitationem soluta voluptatum
+        repellat.
+    </div><br>
+    <img src="https://cdn.pixabay.com/photo/2023/05/29/00/24/blue-tit-8024809_1280.jpg" alt="" height="400" width="400" style="margin-left: auto;margin-right: auto;display: block;">
+
+    
+    <script>
+        let ran = document.getElementById("ran")
+        let span = document.getElementById("span")
+        span.textContent = ran.value
+        ran.onchange = () => {
+            span.textContent = ran.value
+            console.log(ran.value);
+        }
+
+    </script>
+</body>
+
+</html>

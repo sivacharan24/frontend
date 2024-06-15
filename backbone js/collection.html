@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"
+        type="text/javascript"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" type="text/javascript"></script>
+</head>
+<body>
+
+    <div id="content"></div>
+
+    <!-- <script type="text/template" id="temp">
+        <% _.each(collection,function(model)){ %>
+            Name : <%= model.name %>
+        <% } %>
+       
+    </script> -->
+
+    <script>
+        let Team=Backbone.Model.extend()
+        let Team1=new Team({
+            name:"siva",
+            age:23
+        })
+        let Team2=new Team({
+            name:"srinu",
+            age:22
+        })
+        let Team3=new Team({
+            name:"yash",
+            age:23
+        })
+
+        let myCollection=Backbone.Collection.extend({
+            model:Team
+        })
+
+        // let Collections=new myCollection([Team1,Team2,Team3])
+        let Collections=new myCollection()
+
+        Collections.add(Team1)
+        // Collections.add(Team2)
+        Collections.add([Team1,Team2])
+        // Collections.add(Team2,{at:0})  //it is used to place at particular position(array index need to be specified)
+        
+        // Collections.remove(Team2) 
+
+        // Collections.unshift(Team1)
+        // Collections.unshift(Team2)
+        // Collections.unshift([Team1,Team2])
+
+        // Collections.shift()
+  
+
+        // Collections.push(Team1)
+        // Collections.push(Team2)
+        // Collections.push([Team1,Team2])
+
+        // Collections.pop()
+
+
+
+        let myview=Backbone.View.extend({
+            el:"#content",
+            collection:Collections,
+            initialize:function(){
+                this.render()
+            },
+            render:function(){
+                console.log("from view");
+                console.log(this.collection);
+                console.log(this.collection.toJSON());
+                // _.each(this.collection.toJSON(),function(model){
+                //     // console.log(model);
+                //     console.log(model.name);
+                // })
+                //_.each method is used to iterate over the collection
+
+                // this.$el.html(this.template())
+                
+
+                //collection methods
+                //1.add - it is used to add(append) a model to a collection
+                //2.remove - it is used to remove(from the end) a model from a collection
+                //3.push - it is used to add(append) a model to a collection
+                //4.pop it is used to remove(from the end) a model from a collection
+                //5.shift it is used to remove(from the start) a model from a collection
+                //6.unshift - it is used to add(at the front) a model to a collection
+            }
+        })
+        let v=new myview()
+    </script>
+</body>
+</html>

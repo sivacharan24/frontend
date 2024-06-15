@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM manipulation</title>
+    <style>
+        #form {
+            border: 2px solid;
+            height: 86vh;
+            width: 40%;
+            margin: auto;
+            /* margin-top: 5%; */
+            padding: 5px;
+        }
+
+        input {
+            width: 90%;
+            height: 5vh;
+            /* margin-top: 1%; */
+            margin: 2% 3% 0% 2%;
+            padding: 10px 15px;
+        }
+
+        #butt {
+            /* margin-top: 4%; */
+            margin-left: 4%;
+        }
+
+        input::placeholder {
+            color: rgb(57, 10, 102);
+            font-size: 1.25em;
+        }
+
+        .warn {
+            margin-left: 4%;
+        }
+    </style>
+</head>
+
+<body>
+    <center> <button id="show">Show</button>
+        <!-- <button id="hide">Hide</button> -->
+        <br><br>
+    </center>
+
+    <form action="" id="form">
+        <center><b style="font-size: x-large;color: tan;">Registration Form</b><br></center><br>
+        <input type="text" name="username" id="username" placeholder="Username"><br>
+        <p class="warn"></p>
+        <input type="email" name="email" id="email" placeholder="Email"><br>
+        <p class="warn"></p>
+        <input type="password" name="password" id="password" placeholder="Password"><br><br>
+        <center>(Password must contain Minimum 8 characters and Maximum upto 14 characters, at least one uppercase
+            letter, at least one lowercase letter, one number and one special character)</center>
+        <p class="warn"></p>
+        <center> <button id="butt">Submit</button></center>
+    </form>
+
+
+    <script>
+        // let a=1010  //parsing a binary number to decimal and vice-versa
+        // let b=110
+        // let c=parseInt(a,2)+parseInt(b,2)
+        // let d=c.toString(2)
+        // console.log(c);
+        // console.log(d);
+
+        let show = document.getElementById("show")
+        let hide = document.getElementById("hide")
+        let form = document.getElementById("form")
+        let butt = document.getElementById("butt")
+
+        show.onclick = () => {
+            let display = show.classList.toggle(true)
+            if (display) {
+                form.style.display = "none"
+                show.innerText = "Show"
+                console.log('show');
+            } else {
+                form.style.display = "block"
+                show.innerText = "Hide"
+                console.log('hide');
+            }
+        }
+
+        //form validation
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault()
+
+            let username = document.getElementById("username").value
+            let password = document.getElementById("password").value
+            let email = document.getElementById("email").value
+
+            document.getElementsByClassName("warn")[0].innerText = ""
+            document.getElementsByClassName("warn")[1].innerText = ""
+            document.getElementsByClassName("warn")[2].innerText = ""
+
+            if (username === "") {
+                document.getElementsByClassName("warn")[0].innerText = "Please enter Username!"
+                document.getElementsByClassName("warn")[0].style.color = "red"
+                document.getElementsByClassName("warn")[0].style.borderColor = "red"
+            }
+
+            if (email === "") {
+                document.getElementsByClassName("warn")[1].innerText = "Please enter Email!"
+                document.getElementsByClassName("warn")[1].style.color = "red"
+                document.getElementsByClassName("warn")[1].style.borderColor = "red"
+            }
+
+            let regularExpression = "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+
+            // console.log(regularExpression.test(password));
+            if (!validatePassword(password)) {
+                document.getElementsByClassName("warn")[2].innerText = "Password does not match with given pattern"
+                document.getElementsByClassName("warn")[2].style.color = "red"
+                document.getElementsByClassName("warn")[2].style.borderColor = "red"
+            }
+           
+            function validatePassword(passwordt) {
+
+                var minNumberofChars = 8;
+                var maxNumberofChars = 14;
+
+                if (passwordt.length < minNumberofChars || passwordt.length > maxNumberofChars) {
+                    return false;
+                }
+                if (!regularExpression.test(passwordt)) {
+                    
+                    return false;
+                }
+            }
+            // form.reset()
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

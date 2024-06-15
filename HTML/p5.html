@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="para"></p>
+    <button id="butt">click for current time</button>
+    <script>
+        // {
+        //     var x=10 //we can access it outside the block   
+        //     let y=20 //we cannot access it outside the block
+        //     const z=30 //we cannot access it outside the block
+        // }
+        // console.log(x); //we can access the value of x outside the block also because var is a global scope
+        // var x=20
+        // console.log(x);
+        // x=10
+        // console.log(x);
+        // var x;
+        // console.log(2**8);      //** is exponential operator . x ** y produces the same result as Math.pow(x,y)
+        // console.log('5'>'1');
+        
+        // const a=[1,2,3,4,5]
+        // console.log(a);
+        // a[1]=20
+        // console.log(a);
+        // a.pop()
+        // console.log(a);
+
+        //we can declare an array or object with const and we can make changes to that array or object(we can add or delete items from that array or object)
+        // const obj={
+        //     name:'siva',
+        //     age:22
+        // }
+        // console.log(obj);
+        // obj.name="charan"
+        // obj.gender="male"
+        // console.log(obj);
+        // console.log(obj.name);
+        // console.log(obj["name"]);
+        // let butt=document.getElementById("butt")
+        // let para=document.getElementById("para")
+        // butt.onclick=()=>{
+        //     para.innerText=Date()
+        //     console.log(Date());
+        // }
+        // let x=4  //converting a integer to binary and binary number to integer vice-versa
+        // let y=x.toString(2)  //converting to binary
+        // console.log(typeof(y));
+        // let z=Number(y)
+        // console.log(typeof(z));
+        // let a=parseInt(y,2) //converting back to integer
+        // console.log(a);
+
+        let x=[1,2,3,4,5,6,7]
+
+        x.forEach((v)=>{
+            console.log(v);
+        })
+
+        const arr=x.flatMap((x)=>x**2)
+
+        const arr1=x.map((x)=>{return x*2})
+
+        console.log(arr);
+
+        console.log(arr1);
+
+        const even=x.filter((a)=>{
+            return a%2==0
+        })
+
+        console.log(even);
+        let sum=x.reduce((t,a)=>{
+            return a+t
+        })
+        console.log(sum);
+
+        const arr2=Array.from("ABCD")
+        console.log(arr2);
+
+        const key=x.keys()
+        for(let e of key){
+            console.log(e);
+        }
+        
+        const q=x.entries()
+        for(let e of q){
+            console.log(e);
+        }
+    </script>
+</body>
+</html>

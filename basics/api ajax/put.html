@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            border: 2px solid;
+            width: 36%;
+            height: 65vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 11%;
+            margin-left: 35.5%;
+            box-shadow: 0.5px 0.5px 1px 6px silver;
+        }
+
+        form input{
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 15px 10px;
+            width: 300px;
+
+        }
+        form input::placeholder{
+            color: black;
+        }
+        form input::selection{
+            border-color: blue;
+        }
+        form button{
+            border: none;
+            border-radius: 10px;
+            background-color: green;
+            color: whitesmoke;
+            padding: 12px 60px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <form id="form">
+        <label for="" style="font-size: 2rem;font-family: Arial, Helvetica, sans-serif;font-weight: 400;">Forgot Password</label><br>
+        <input type="email" id="" name="email" placeholder="Email" required><br>
+        <input type="password" id="p1" name="password" placeholder="Password" required><br>
+        <input type="password" id="p2" name="cpassword" placeholder="Confirm Password" required><br>
+        <button>Reset Password</button>
+    </form>
+    
+    <p id="status1"></p>
+
+    <script>
+        let form=document.getElementById("form")
+       form.onsubmit=(e)=>{
+        e.preventDefault()
+        let email=document.getElementById("email").value
+        let password=document.getElementById("password").value
+        let cpassword=document.getElementById("cpassword").value
+        let userDetails={email,password,cpassword}
+        
+        console.log(userDetails);
+        let status1=document.getElementById("status1")
+        let ajax=new XMLHttpRequest()
+        ajax.open("POST","http://localhost:8080/user/resetPassword")
+        ajax.setRequestHeader("Content-Type", "application/json"); 
+        ajax.onload=()=>{
+            status1.textContent=ajax.status
+        }
+        ajax.send(JSON.stringify(userDetails))
+        form.reset()
+       }
+    </script>
+</body>
+</html>

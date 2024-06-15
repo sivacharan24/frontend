@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="butt">get details</button><br><br>
+    <table id="tab" border="2">
+        <tr>
+            <th>username</th>
+        </tr>
+
+    </table>
+
+    <script>
+        // let tab=document.getElementById("tab")
+        // let ajax=new XMLHttpRequest()
+        // ajax.open("GET","https://dummyjson.com/users")
+        // ajax.onload=()=>{
+        //     console.log(ajax);
+        //     let res=ajax.response
+        //     // res.json();
+            
+        //     document.getElementById("butt").onclick=()=>{
+        //         for(let ele of res){
+        //         let data=`
+        //             <tr><td>${res.firstName}</td></tr>
+        //         `
+        //         tab.innerHTML+=data
+        //     }
+        //     }
+        // }
+        // ajax.send()
+        // console.log(1);
+        // function abc(){
+        //     console.log(2+2);
+        // }
+        // abc()
+        // let p=new Promise((resolve,reject)=>{
+
+        // })
+        // console.log(3);
+
+        // let myPromise = new Promise(function (myResolve, myReject) {
+        //         let x = 0;
+
+        //         // The producing code (this may take some time)
+
+        //         if (x == 1121) {
+        //             myResolve("OK");
+        //         } else {
+        //             myReject("Error");
+        //         }
+        //     });
+
+        //     myPromise.then(
+        //         function (value) { console.log(value); }
+        //     );
+        //     myPromise.catch(
+        //         function (error) { console.log(error); }
+        //     )
+
+        // let promise=new Promise((response,reject)=>{
+        //    if(2==='2'){
+        //         response("success")
+        //    }else{
+        //         reject("error")
+        //    }
+        // })
+        // promise.then(function(s){
+        //     console.log(s);
+        // })
+
+        // promise.catch(function(e){
+        //     console.log(e);
+        // })
+            function add(a,b){
+                return a+b;
+            }
+        setTimeout(add(10,10),2000)
+        // setInterval(add(10,20),2000)
+    </script>
+</body>
+</html>

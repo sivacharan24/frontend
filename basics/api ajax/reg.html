@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            border: 2px solid;
+            height: 80vh;
+            width: 40%;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            /* align-items: center; */
+            margin-left: 30%;
+            margin-top: 10%;
+            box-shadow: 2px 3px 4px 5px burlywood;
+        }
+        form input{
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 15px 10px;
+            width: 300px;
+
+        }
+        form input::placeholder{
+            color: black;
+        }
+        form input::selection{
+            border-color: blue;
+        }
+        form button{
+            border: none;
+            border-radius: 10px;
+            background-color: green;
+            color: whitesmoke;
+            padding: 12px 60px;
+            font-size: 1em;
+        }
+   </style>
+</head>
+
+<body>
+    <div style="display: flexbox;">
+        <form id="form" action="/register">
+            <label for="" style="color: blueviolet;font-size: 1.9em;font-family: Arial, Helvetica, sans-serif;font-weight: 400;">Picktime Register</label><br>
+            <!-- <input type="text" name="id" id="id" placeholder="Id" required><br> -->
+            <input type="text" name="username" id="username" placeholder="Full name" required><br>
+            <input type="email" name="email" id="email" placeholder="Email" required><br>
+            <input type="password" name="password" id="password" placeholder="Password" required><br>
+            <!-- <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" required> <br> -->
+            <button>Register</button>
+        </form>
+    </div>
+    <p id="status1"></p>
+    <script>
+        let form=document.getElementById("form")
+       form.onsubmit=(e)=>{
+        e.preventDefault()
+        // let id=document.getElementById("id").value
+        // let id=document.getElementById("id").value+""
+        // console.log(id);
+        let username=document.getElementById("username").value
+        let email=document.getElementById("email").value
+        let password=document.getElementById("password").value
+        // let cpassword=document.getElementById("cpassword").value
+        let userDetails={username,email,password}
+        console.log(JSON.stringify(userDetails));
+        console.log(userDetails);
+        let status1=document.getElementById("status1")
+        let ajax=new XMLHttpRequest()
+        ajax.open("POST","http://localhost:8080/register")
+        ajax.setRequestHeader("Content-Type", "application/json"); 
+        ajax.onload=()=>{
+            status1.textContent=ajax.status
+        }
+        ajax.send(JSON.stringify(userDetails))
+        // ajax.send(username,email,password)
+        form.reset()
+       }
+    </script>
+</body>
+</html>

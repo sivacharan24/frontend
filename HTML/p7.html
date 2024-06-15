@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div>hello</div>
+    <p class="para">the para</p>
+    <p id="par">the par</p>
+    <p>ddfgg</p> -->
+
+    <select name="country" id="country" style="margin-right:15% ;padding: 10px;">
+       <option value="" selected>Please select your country</option>
+    </select>
+
+    <input list="clist" style="padding: 10px"><br>
+
+    <datalist id="clist" >
+
+    </datalist>
+
+    <script>
+        // let c=document.getElementsByClassName("para")
+        // console.log(c);
+        // let d=document.getElementsByTagName("p")
+        // console.log(d);
+        // let e=document.querySelector("#par")
+        // console.log(e);
+        // let f=document.querySelectorAll("p")
+        // console.log(f);
+
+        window.fetch("https://testapi.devtoolsdaily.com/countries")
+        .then((data)=>{
+            console.log(data);
+            return data.json();
+        })
+        .then((res)=>{
+            console.log(res);
+            let country = document.getElementById("country")
+            let clist = document.getElementById("clist")
+            console.log(res[0]);
+
+            for(let ele of res){
+                let r=`
+                    <option value=${ele.name}>${ele.name}</option>
+                `
+                country.innerHTML+=r
+                clist.innerHTML+=r
+        }
+            
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch api</title>
+    <style>
+        select{
+            margin-right: 4%;
+            padding: 1%;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    <!-- states-districts api fetched -->
+    <select name="" id="states" onclick="handleChange()">
+
+    </select>
+    <select name="" id="districts">
+
+    </select>
+    <span id="hint"></span>
+
+    <script>
+        let states=document.getElementById("states")
+        let districts=document.getElementById("districts")
+        var arr;
+        let f=window.fetch("https://raw.githubusercontent.com/sab99r/Indian-States-And-Districts/master/states-and-districts.json")
+        // console.log(f);
+        f.then((data)=>{
+            // console.log(data);
+            return data.json()
+        })
+        .then((res)=>{
+            // console.log(res.states);
+            arr=res.states
+            for(let ele of res.states){
+                // console.log(ele);
+                let r=`
+                <option value=${ele.state}>${ele.state}</option>
+                `
+                states.innerHTML+=r
+            }
+        })
+        
+        function handleChange(){
+            let selectedState=states.value
+            districts.innerHTML = "";
+            console.log(selectedState);
+            console.log(arr);
+            let c=0;
+            for(let ele of arr){
+                let st=ele.state
+                if (st.includes(selectedState)) {
+                    console.log(st);
+                    console.log("State found: "+ st);
+                    for(let d of ele.districts){
+                        c++;
+                        let r=`
+                            <option value=${d}>${d}</option>
+                        `
+                        districts.innerHTML+=r
+                        
+                    }
+                    document.getElementById("hint").innerHTML=`<b>${st}</b> has <b>${c}</b> districts. `
+                    break;
+                }
+                else {
+                    console.log("Substring not found");
+                }
+            }
+        }
+
+    </script>
+
+</body>
+</html>

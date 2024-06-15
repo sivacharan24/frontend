@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            border: 2px solid;
+            height: 80vh;
+            width: 40%;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            /* align-items: center; */
+            margin-left: 30%;
+            margin-top: 10%;
+            box-shadow: 2px 3px 4px 5px burlywood;
+        }
+        form input{
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 15px 10px;
+            width: 300px;
+
+        }
+        form input::placeholder{
+            color: black;
+        }
+        form input::selection{
+            border-color: blue;
+        }
+        form button{
+            border: none;
+            border-radius: 10px;
+            background-color: green;
+            color: whitesmoke;
+            padding: 12px 60px;
+            font-size: 1em;
+        }
+   </style>
+</head>
+
+<body>
+    <div style="display: flexbox;">
+        <img srcset="https://cdn.pixabay.com/photo/2023/10/29/01/32/flamingo-8348527_1280.jpg" alt="" height="200" width="200">
+        <form id="form">
+            <label for="" style="color: blueviolet;font-size: 1.9em;font-family: Arial, Helvetica, sans-serif;font-weight: 400;">Delete user</label><br>
+            <input type="email" name="email" id="email" placeholder="Email" required><br>
+            <button>Delete</button>
+        </form>
+    </div>
+    <p id="status1"></p>
+    <script>
+        let form=document.getElementById("form")
+       form.onsubmit=(e)=>{
+        e.preventDefault()
+        let email=document.getElementById("email").value
+        let userDetails={email}
+
+        console.log(userDetails);
+
+        let status1=document.getElementById("status1")
+        let ajax=new XMLHttpRequest()
+        ajax.open("DELETE","http://localhost:8080/user/deleteUser")
+        ajax.setRequestHeader("Content-Type", "application/json"); 
+        ajax.onload=()=>{
+            status1.textContent=ajax.status
+        }
+        ajax.send(JSON.stringify(userDetails))
+        form.reset()
+       }
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            height: 10vh;
+            width: 50%;
+            border: 1px solid;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: auto;
+        }
+        .div1,.div2,.div3,.div4{
+            color: burlywood;
+        }
+        .div1:hover,.div2:hover,.div3:hover,.div4:hover{
+            background-color: aquamarine;
+            cursor: pointer;
+        }
+        @media (max-width:644px){
+            #container{
+                flex-direction: column;
+                height: auto;
+                width: 25%;
+                margin: unset;
+                align-items: flex-start;
+            }
+            .div1,.div2,.div3,.div4{
+                padding: 10%;
+            }
+            .div1:hover,.div2:hover,.div3:hover,.div4:hover{
+            background-color: gainsboro;
+            cursor: pointer;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="div1">home</div>
+        <div class="div2">about us</div>
+        <div class="div3">help</div>
+        <div class="div4">contact us</div>
+    </div>
+</body>
+</html>

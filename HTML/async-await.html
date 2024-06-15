@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async-Await</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        #container{
+            height: auto;
+            width: 80%;
+            margin: auto;
+            /* border: 2px solid; */
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 2%;
+        }
+        .card{
+            margin: 1.5%;
+            box-shadow: 10px 10px 4px 2px gray;
+        }
+    </style>
+</head>
+<body>
+    <!-- <label for="" style="padding: 5% 2%;">Categories : </label>
+    <select name="" id="sel" style="padding: 0.5%;">
+        <option value="electronics">electronics</option>
+        <option value="jewelery">jewelery</option>
+        <option value="men's clothing">men's clothing</option>
+        <option value="women's clothing">women's clothing</option>
+    </select> -->
+    <div id="container">
+       
+    </div>
+   
+
+
+    <script>
+        async function fetchAPI(){
+            let res=await fetch("https://fakestoreapi.com/products")
+            console.log(res);
+            let data=res.json()
+            console.log(data);
+            data.then((items)=>{
+                console.log(items);
+                // let electronics=items.filter((a)=>{
+                //     // console.log(a);
+                //     if(a.category==='electronics'){
+                //         return a
+                //     }
+                // })
+                // let jewelery=items.filter((a)=>{
+                //     // console.log(a);
+                //     if(a.category==='jewelery'){
+                //         return a
+                //     }
+                // })
+                // let men=items.filter((a)=>{
+                //     // console.log(a);
+                //     if(a.category==="men's clothing"){
+                //         return a
+                //     }
+                // })
+                // let women=items.filter((a)=>{
+                //     // console.log(a);
+                //     if(a.category==="women's clothing"){
+                //         return a
+                //     }
+                // })
+                // console.log(electronics);
+                // console.log(jewelery);
+                // console.log(men);
+                // console.log(women);
+                // let cat=[electronics,jewelery,men,women]
+                
+                let container=document.getElementById("container")
+                let select=document.getElementById("sel")
+                
+                            
+                            for(let ele of items){
+                                let x=`
+                                    <div class="card" style="width: 15rem;">
+                                        <img src=${ele.image} class="card-img-top" alt="..." height="240" style="padding:15px">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${ele.title}</h5>
+                                            <p class="card-text">Price - $ <b>${ele.price}</b></p>
+                                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                `
+                                container.innerHTML+=x
+                            }
+                
+            })
+        } 
+        fetchAPI()
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>get operation using ajax</h1>
+
+    <table id="table" border="5" >
+        <tr>
+            <th>username</th>
+            <th>email</th>
+            <th>password</th>
+        </tr>
+        <form action="getUsers" id="getDetails">
+            <button>submit</button>
+        </form>
+    </table>
+    <input type="submit" value="Get Data" id="getdata">
+    <div id="datarelated"></div>
+    
+
+
+
+    <script>
+     let button=document.getElementById("getdata");
+     let table=document.getElementById("table")
+     let data=document.getElementById("datarelated");
+     button.addEventListener('click',loadData)
+
+     function loadData(){
+        let xh=new XMLHttpRequest();
+       
+        xh.open('GET',' http://localhost:8080/getUsers',true)
+        xh.send()
+        xh.onprogress= function(){
+            data.innerText="please wait... Loading"
+        }
+        xh.onload=function(){
+            // data.innerText=xh.responseText;
+            table.innerHTML+=`
+                <tr>
+                    <td>${xh.response.username}</td>    
+                    <td>${xh.response.email}</td>
+                    <td>${xh.response.password}</td>
+                </tr>
+            `
+        }
+     }
+
+    </script>
+
+    <!-- <script>
+        let button=document.getElementById("getdata");
+        let data=document.getElementById("datarelated");
+        button.addEventListener('click',loadData)
+   
+        function loadData(){
+           let xh=new XMLHttpRequest();
+          
+           xh.open('GET',' http://localhost:8080/getUsers',true)
+           console.log(xh)
+           xh.send()
+           xh.onprogress= function(){
+               data.innerText="please wait... Loading"
+           }
+           xh.onload=function(){
+               data.innerText=xh.responseText;
+           }
+        }
+        </script> -->
+</body>
+</html>

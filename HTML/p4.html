@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .box{
+            width: 100%;
+            height: 96vh;
+            display: grid;
+            grid-template-columns: repeat(12,1fr);
+            grid-template-rows:repeat(12,1fr) ;
+            grid-gap: 5px;
+            border: 2px red solid;
+        }
+        .box1{
+            background-color: purple;
+            border: 2px solid;
+            grid-row-start: 1;
+            grid-row-end: 5;
+            grid-column-start: 1;
+            grid-column-end: 13;
+        }
+        .box2{
+            background-color: blue;
+            border: 2px solid;
+            grid-row-start: 5;
+            grid-row-end: 6;
+            grid-column-start: 1;
+            grid-column-end: 4;
+        }
+        .box3{
+            background-color: blue;
+            border: 2px solid;
+            grid-row-start: 6;
+            grid-row-end: 7;
+            grid-column-start: 1;
+            grid-column-end: 4;
+        }
+        .box4{
+            background-color: blue;
+            border: 2px solid;
+            grid-row-start: 7;
+            grid-row-end: 8;
+            grid-column-start: 1;
+            grid-column-end: 4;
+        }
+        .box5{
+            background-color: blue;
+            border: 2px solid;
+            grid-row-start: 8;
+            grid-row-end: 9;
+            grid-column-start: 1;
+            grid-column-end: 4;
+        }
+        .box6{
+            background-color: blue;
+            border: 2px solid;
+            grid-row-start: 5;
+            grid-row-end: 9;
+            grid-column-start: 10;
+            grid-column-end: 13;
+        }
+        .box7{
+            background-color: blueviolet;
+            border: 2px solid;
+            grid-row-start: 11;
+            grid-row-end: 13;
+            grid-column-start: 1;
+            grid-column-end: 13;
+        }
+        @media (max-width:600px){
+            .box2,.box3,.box4,.box5{
+                grid-column-start: 1;
+                grid-column-end: 13;
+            }
+            .box6{
+                grid-row-start: 12;
+                grid-row-end:16;
+                grid-column-start: 1;
+                grid-column-end: 13;
+            }
+            .box7{
+                grid-row-start:16 ;
+                grid-row-end: 24;
+                
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+        <div class="box5"></div>
+        <div class="box6"></div>
+        <div class="box7"></div>
+    </div>
+</body>
+</html>

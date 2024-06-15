@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            border: 2px solid;
+            height: 10vh;
+            width: 30%;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            /* align-items: center; */
+            margin-left: 30%;
+            margin-top: 10%;
+            box-shadow: 2px 3px 4px 5px burlywood;
+        }
+        form input{
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 15px 10px;
+            width: 300px;
+
+        }
+        form input::placeholder{
+            color: black;
+        }
+        form input::selection{
+            border-color: blue;
+        }
+        form button{
+            border: none;
+            border-radius: 10px;
+            background-color: green;
+            color: whitesmoke;
+            padding: 12px 60px;
+            font-size: 1em;
+        }
+   </style>
+</head>
+<body>
+    <div style="display: flexbox;">
+        <form id="form" action="/getUsers">
+            <button id="butt">Get Users</button>
+        </form>
+    </div><br><br>
+
+
+    <table cellspacing="10" cellpadding="10" id="table" border="3" style="border-collapse: collapse;" >
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>USERNAME</th>
+                <th>EMAIL</th>
+                <!-- <th>DATE</th> -->
+            </tr>
+        </thead>
+        <tbody id="tab">
+            
+        </tbody>
+    </table>
+    <p id="status1"></p>
+    <script>
+        let form=document.getElementById("form")
+       form.onsubmit=(e)=>{
+        e.preventDefault()
+        let tab=document.getElementById("tab")
+        
+        let status1=document.getElementById("status1")
+        let ajax=new XMLHttpRequest()
+        ajax.open("GET","http://localhost:8080/getUsers")
+        ajax.setRequestHeader("Content-Type", "application/json"); 
+        ajax.onload=()=>{
+            status1.textContent=ajax.status
+            console.log(ajax);
+            // console.log(ajax.response);
+            let res=JSON.parse(ajax.response)
+            console.log(res);
+            for(let ele of res){
+                tab.innerHTML+=`
+                <tr>
+                    <td>${ele.id}</td>  
+                    <td>${ele.username}</td>  
+                    <td>${ele.email}</td>  
+                </tr>
+            `
+            }
+            // res.foreach((item)=>{
+            //     let data=`
+            //      <tr>
+            //         <td>${item.id}</td>  
+            //         <td>${item.username}</td>  
+            //         <td>${item.email}</td>  
+            //         <td>${item.date}</td>  
+            //     </tr>
+            // `
+            // tab.innerHTML+=data
+            
+            // });
+                
+            
+        }
+        ajax.send()
+        form.reset()
+       }
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            padding: 10px 5px;
+            margin: 15px 15px;
+        }
+    </style>
+</head>
+<body>
+    <table border="2" id="tab">
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Status</th>
+        </tr>
+    </table><br><br>
+    <form id="form" style="width: 25%;">
+        <fieldset>
+            <legend>registration form</legend>
+            <input type="text" id="username" name="username" placeholder="username"><br>
+            <input type="email" id="email" name="email" placeholder="email"><br>
+            <input type="password" id="password" name="password" placeholder="password"><br>
+            <button>Register</button>
+        </fieldset>
+    </form><br>
+
+    <form id="fp" style="width: 25%;">
+        <fieldset>
+            <legend>Forgot Password</legend>
+            <input type="email" id="femail" name="email" placeholder="email"><br>
+            <input type="password" id="fpassword" name="password" placeholder="password"><br>
+            <button>Update Password</button>
+        </fieldset>
+    </form>
+
+    <script>
+        //fetching data(get method)
+        let f=fetch("http://localhost:8080/getUsers")
+        console.log(f);
+        f.then((response)=>{
+            console.log(response);
+            return response.json()
+        })
+        .then((data)=>{
+            console.log(data);
+            let tab=document.getElementById("tab")
+            for(let ele of data){
+                // console.log(ele);
+                let x=`
+                <tr>
+                    <td>${ele.id}</td>
+                    <td>${ele.username}</td>
+                    <td>${ele.email}</td>
+                    <td>${ele.status}</td>
+                </tr>
+                `
+                tab.innerHTML+=x
+
+            }
+        })
+
+        //post method
+        let form=document.getElementById("form")
+        form.onsubmit=(e)=>{
+            e.preventDefault()
+            let username = document.getElementById("username").value
+            let email = document.getElementById("email").value
+            let password = document.getElementById("password").value
+            let userDetails={username,email,password}
+            console.log(userDetails);
+
+            fetch("http://localhost:8080/register",{
+                method:'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify(userDetails)
+            })
+            .then((response)=>response.json())
+            .then((data=>{console.log(data);}))
+        }
+
+        //put method
+
+        // let fp=document.getElementById("fp")
+        // fp.onsubmit=(e)=>{
+        //     e.preventDefault()
+        //     let femail = document.getElementById("email").value
+        //     let fpassword = document.getElementById("password").value
+        //     let userDetailsfp={email,password}
+        //     console.log(userDetailsfp);
+
+        //     fetch("http://localhost:8080/forgotPassword",{
+        //         method:'PUT',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body:JSON.stringify(userDetailsfp)
+        //     })
+        //     .then((response)=>response.json())
+        //     .then((data=>{console.log(data);}))
+        // }
+                                                               
+    </script>
+</body>
+</html>
